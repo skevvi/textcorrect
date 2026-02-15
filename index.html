@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>textcorrect</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="mesh-bg"></div>
+<div class="noise"></div>
+
+<button class="theme-toggle" id="themeBtn" onclick="toggleTheme()">💡</button>
+
+<div class="container">
+
+  <section class="hero reveal">
+    <h1>
+      textcorrect
+      <span class="strike-wrapper">
+        <svg class="strike-svg" viewBox="0 0 500 20">
+          <line x1="0" y1="10" x2="500" y2="10" class="strike-line"/>
+        </svg>
+      </span>
+    </h1>
+
+    <p class="subtitle">pisz konkretnie. oszczedzaj czas.</p>
+
+    <p class="lead">
+      mala zmiana w komunikacji.
+      duza roznica w produktywnosci.
+    </p>
+  </section>
+
+  <section class="section reveal">
+    <div class="glass screenshot">
+      <img src="assets/bad.png" alt="Zła rozmowa">
+    </div>
+    <div class="content">
+      <h2 class="bad">✗ nie pisz w taki sposob...</h2>
+      <p>rzuc okiem ziomek chcial sie mn zapytac o skrypt do minecrafta, mogl to napisac w jednej wiaodmosci, aczkolwiek postanowil czekac az ja odpowiem, akurat wtedy mialem czas, odpisalem mu odrazu, ale jakbym nie mial czas to chyba do grobu bym mu wyslal ten skrypt xdd</p>
+    </div>
+  </section>
+
+  <section class="section reveal">
+    <div class="glass screenshot">
+      <img src="assets/good.png" alt="Dobra rozmowa">
+    </div>
+    <div class="content">
+      <h2 class="good">✓ pisz w taki!</h2>
+      <p>jak widzisz osoba na screenshocie po prawo napisala wprost czy mam link oraz odrazu powiedziala o jaki chodzi odrazu wyslalem ten link i calosc zakonczyla sie w trzech wiadomosciach liczac podziekowania</p>
+    </div>
+  </section>
+
+</div>
+
+<footer class="footer">
+  <p class="thanks">big szaralt dla dwoch moich znajomych ktorzy sa na screenshotach</p>
+   <p class="thanks">uzylem ich do tej strony wszystko zostalo zainicjowane zadna z tych sytuacji sie nie wydazyla konkretnie na tych przykladach</p>
+   <p class="thanks">ale serio jak piszecie to piszcie pelnymi zdaniami albo nie piszcie w ogole</p>
+    <p class="thanks">stronka zrobiona na szybko z nudow wsm</p>
+    <p class="thanks">kiedys zrobie wersje po angielsku rn mi s n chce</p>
+</footer>
+
+
+<footer class="footer">
+  <p class="made-by">made by <span>skevvi</span></p>
+</footer>
+
+
+
+
+
+<script>
+function toggleTheme() {
+  document.body.classList.toggle("light");
+  const btn = document.getElementById("themeBtn");
+  btn.textContent = document.body.classList.contains("light") ? "🔌" : "💡";
+}
+
+
+const reveals = document.querySelectorAll(".reveal");
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add("active");
+    }
+  });
+}, { threshold: 0.2 });
+
+reveals.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
